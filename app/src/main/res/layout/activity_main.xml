@@ -13,12 +13,22 @@
         android:id="@+id/vulnerable_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vulnerable"/>
+        android:layout_margin="16dp"
+        android:background="@drawable/button_drawable"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="Vulnerable"
+        android:textColor="@android:color/white"/>
 
     <Button
         android:id="@+id/non_vulnerable_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Safe"/>
+        android:layout_margin="16dp"
+        android:background="@drawable/button_drawable"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="Safe"
+        android:textColor="@android:color/white"/>
 
 </LinearLayout>

@@ -10,31 +10,35 @@
     tools:context="app.com.thetechnocafe.sqlinjection.VulnerableActivity">
 
     <EditText
-        android:id="@+id/name_exit_text"
+        android:id="@+id/name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:inputType="textShortMessage"
         android:hint="Name"/>
 
     <EditText
-        android:id="@+id/phone_exit_text"
+        android:id="@+id/phone_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:inputType="phone"
         android:hint="Phone Number"/>
 
     <EditText
-        android:id="@+id/email_exit_text"
+        android:id="@+id/email_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:inputType="textEmailAddress"
         android:hint="Email"/>
 
     <EditText
-        android:id="@+id/type_exit_text"
+        android:id="@+id/type_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:inputType="textShortMessage"
         android:hint="Type"/>
 
     <Button

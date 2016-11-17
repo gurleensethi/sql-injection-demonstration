@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         mVulnerableButton = (Button) findViewById(R.id.vulnerable_button);
         mNonVulnerableButton = (Button) findViewById(R.id.non_vulnerable_button);

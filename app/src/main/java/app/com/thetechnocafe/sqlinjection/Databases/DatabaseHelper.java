@@ -10,12 +10,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABSE_VERSION = 1;
-    private static final String DATABASE_NAME = "sample_database";
-    private static final String TABLE_NAME = "contacts_table";
-    private static final String COLUMN_NAME = "name";
-    private static final String COLUMN_PHONE = "phone";
-    private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_TYPE = "type";
+    public static final String DATABASE_NAME = "sample_database";
+    public static final String TABLE_NAME = "contacts_table";
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_PHONE = "phone";
+    public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_TYPE = "type";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABSE_VERSION);
