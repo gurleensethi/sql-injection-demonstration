@@ -1,18 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_vulnerable"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context="app.com.thetechnocafe.sqlinjection.VulnerableActivity">
 
     <EditText
+        android:id="@+id/name_exit_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Name"/>
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/phone_exit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Phone Number"/>
+
+    <EditText
+        android:id="@+id/email_exit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Email"/>
+
+    <EditText
+        android:id="@+id/type_exit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Type"/>
+
+    <Button
+        android:id="@+id/insert_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/button_drawable"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:text="Insert"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>
