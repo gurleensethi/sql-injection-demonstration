@@ -1,5 +1,6 @@
 package app.com.thetechnocafe.sqlinjection;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ public class VulnerableActivity extends AppCompatActivity {
     private Button mInsertButton;
     private DatabaseHelper mDatabaseHelper;
     private SQLiteDatabase mSQLiteDatabase;
+    private Button mSavedListButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class VulnerableActivity extends AppCompatActivity {
         mEmailEditText = (EditText) findViewById(R.id.email_edit_text);
         mTypeEditText = (EditText) findViewById(R.id.type_edit_text);
         mInsertButton = (Button) findViewById(R.id.insert_button);
+        mSavedListButton = (Button) findViewById(R.id.saved_list_button);
 
         //Prepare database
         mDatabaseHelper = new DatabaseHelper(getApplicationContext());
@@ -39,6 +42,14 @@ public class VulnerableActivity extends AppCompatActivity {
                 if (checkForm()) {
                     insertIntoDB();
                 }
+            }
+        });
+
+        mSavedListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(VulnerableActivity.this, SavedContentsActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -68,7 +79,7 @@ public class VulnerableActivity extends AppCompatActivity {
         return true;
     }
 
-    //Inser into database
+    //Insert into database
     private void insertIntoDB() {
         //Get database
         mSQLiteDatabase = mDatabaseHelper.getWritableDatabase();

@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".NonVulnerableActivity">
         </activity>
+        <activity android:name=".SavedContentsActivity">
+        </activity>
     </application>
 
 </manifest>
