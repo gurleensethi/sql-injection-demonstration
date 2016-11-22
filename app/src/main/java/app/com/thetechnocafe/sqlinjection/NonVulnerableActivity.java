@@ -95,9 +95,9 @@ public class NonVulnerableActivity extends AppCompatActivity {
         );
 
         sqLiteStatement.bindString(1, name);
-        sqLiteStatement.bindString(2, name);
-        sqLiteStatement.bindString(3, name);
-        sqLiteStatement.bindString(4, name);
+        sqLiteStatement.bindString(2, email);
+        sqLiteStatement.bindString(3, phone);
+        sqLiteStatement.bindString(4, type);
 
         sqLiteStatement.execute();
     }
