@@ -1,7 +1,9 @@
 package app.com.thetechnocafe.sqlinjection;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +25,7 @@ public class SavedContentsActivity extends AppCompatActivity {
     private DatabaseHelper mDatabaseHelper;
     private SQLiteDatabase mSQLiteDatabase;
     private RecyclerAdapter mRecyclerAdapter;
+    private List<ContactsModel> mContactsModels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class SavedContentsActivity extends AppCompatActivity {
 
         mDatabaseHelper = new DatabaseHelper(getApplicationContext());
 
+        mContactsModels = new ArrayList<>();
+
         loadData();
     }
 
@@ -48,8 +53,13 @@ public class SavedContentsActivity extends AppCompatActivity {
 
         Cursor cursor = mSQLiteDatabase.rawQuery(sql, null);
         while (cursor.moveToNext()) {
-            String name = cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NAME));
-            mStringList.add(name);
+            ContactsModel model = new ContactsModel();
+            model.setName(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_NAME)));
+            model.setType(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_TYPE)));
+            model.setEmail(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_EMAIL)));
+            model.setContact(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_PHONE)));
+
+            mContactsModels.add(model);
         }
 
         //Refresh recycler view
@@ -57,16 +67,26 @@ public class SavedContentsActivity extends AppCompatActivity {
     }
 
     class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
-        class RecyclerViewHolder extends RecyclerView.ViewHolder {
+        class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             private TextView mNameTextView;
+            private int position;
 
             RecyclerViewHolder(View view) {
                 super(view);
                 mNameTextView = (TextView) view.findViewById(R.id.name_text_view);
+
+                view.setOnClickListener(this);
             }
 
             public void bindData(int position) {
-                mNameTextView.setText(mStringList.get(position));
+                this.position = position;
+                mNameTextView.setText(mContactsModels.get(position).getName());
+            }
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + mContactsModels.get(position).getContact()));
+                startActivity(intent);
             }
         }
 
@@ -83,7 +103,7 @@ public class SavedContentsActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return mStringList.size();
+            return mContactsModels.size();
         }
     }
 }
